@@ -31,7 +31,7 @@ def get_content(request):
 
 
 def download(page, content):
-    dir = r'E:\PycharmProjects\mySpider\urllib_\douban'
+    dir = r'E:\PycharmProjects\mySpider\01_urllib\douban'
     path = '\douban_' + str(page) + ".json"
     isExist = os.path.exists(dir)
     if not isExist:
