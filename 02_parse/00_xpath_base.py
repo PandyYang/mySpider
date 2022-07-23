@@ -43,4 +43,6 @@ print(content)
 
 # 逻辑运算
 id_and_class = tree.xpath('//ul/li[@id="l1" and @class = "c1"]/text()')
+id_or = tree.xpath('//ul/li[@id="l1"]/text() | //ul/li[@id="l2"]/text()')
 print(id_and_class)
+print(id_or)
