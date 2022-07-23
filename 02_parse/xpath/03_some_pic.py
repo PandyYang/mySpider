@@ -27,7 +27,7 @@ def get_content(request):
 
 
 def download(page, content):
-    dir = r'E:\PycharmProjects\mySpider\02_parse\chinaz'
+    dir = r'/xpath/chinaz'
     path = '\chinaz_' + str(page) + ".json"
     isExist = os.path.exists(dir)
     if not isExist:
