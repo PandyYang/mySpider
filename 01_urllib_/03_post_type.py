@@ -15,7 +15,7 @@ data = {
 }
 
 # post请求的参数 必须进行编码
-# data = urllib.parse.urlencode(data)
+# data = urllib.02_parse.urlencode(data)
 data = urllib.parse.urlencode(data).encode('utf8')
 
 print(data)
