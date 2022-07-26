@@ -2,7 +2,7 @@ from lxml import etree
 
 # xpath 解析方式 1.本地 2.网络
 
-tree = etree.parse("xpath_base.html")
+tree = etree.parse("bs4_base.html")
 
 # 路径查询
 # / 查子节点
