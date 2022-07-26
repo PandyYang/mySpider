@@ -23,6 +23,7 @@ class ReadbookPipeline:
         self.fp.close()
 
 
+# must config sql pipeline setting in settings.py
 class MysqlPipeline:
     def open_spider(self, spider):
         settings = get_project_settings()
