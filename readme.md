@@ -38,3 +38,11 @@ extract_first() ‐‐‐》提取的是selector列表中的第一个数据
 ```shell
 scrapy crawl 爬虫名称
 ```
+
+# 原理
+SCrapy计划 scrapy.Request 方法返回的对象 start_requests 蜘蛛的方法。在接收到每个请求的响应后，它会实例化 Response 对象，并调用与请求关联的回调方法(在本例中， parse 方法)将响应作为参数传递。
+
+### 存储抓取的数据
+```shell
+scrapy crawl quotes -O quotes.json
+```
