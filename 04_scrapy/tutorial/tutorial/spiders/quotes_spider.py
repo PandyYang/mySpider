@@ -10,13 +10,17 @@ class QuotesSpider(scrapy.Spider):
     也可以不用实现start_requests, 在name下方定义start_urls即可.此列表将由的默认实现使用 start_requests() 要为爬行器创建初始请求
     """
     def start_requests(self):
+        # urls = [
+        #     'http://quotes.toscrape.com/page/1/',
+        #     'http://quotes.toscrape.com/page/2/',
+        # ]
+
         urls = [
-            'http://quotes.toscrape.com/page/1/',
-            'http://quotes.toscrape.com/page/2/',
+            'http://httpbin.org/get'
         ]
 
         for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+            yield scrapy.Request(url=url, callback=self.parse, meta={'proxy': 'http://103.178.12.22:8080'})
 
     """
     将被调用以处理为每个请求下载的响应的方法。Response参数是 TextResponse 它保存页面内容，并具有进一步有用的方法来处理它。
@@ -29,15 +33,17 @@ class QuotesSpider(scrapy.Spider):
         #     f.write(response.body)
         # self.log(f'Saved file {filename}')
 
-        for quote in response.css('div.quote'):
-            yield {
-                'text': quote.css('span.text::text').get(),
-                'author': quote.css('small.author::text').get(),
-                'tags': quote.css('div.tags a.tag::text').getall(),
-            }
+        # for quote in response.css('div.quote'):
+        #     yield {
+        #         'text': quote.css('span.text::text').get(),
+        #         'author': quote.css('small.author::text').get(),
+        #         'tags': quote.css('div.tags a.tag::text').getall(),
+        #     }
+        #
+        # # 追踪下一个页面
+        # next_page = response.css('li.next a::attr(href)').get()
+        # if next_page is not None:
+        #     next_page = response.urljoin(next_page)
+        #     yield scrapy.Request(next_page, callback=self.parse)
 
-        # 追踪下一个页面
-        next_page = response.css('li.next a::attr(href)').get()
-        if next_page is not None:
-            next_page = response.urljoin(next_page)
-            yield scrapy.Request(next_page, callback=self.parse)
+        print(response.text)
